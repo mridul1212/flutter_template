@@ -1,0 +1,33 @@
+name: flutter_template
+description: "Flutter boilerplate — clean architecture, BLoC/Cubit, onboarding, auth, token cache."
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  equatable: ^2.0.7
+  flutter_bloc: ^9.1.1
+  shared_preferences: ^2.5.3
+  cached_network_image: ^3.4.1
+  dio: ^5.9.0
+  connectivity_plus: ^6.1.1
+  internet_connection_checker: ^3.0.1
+  package_info_plus: ^8.3.0
+  pub_semver: ^2.2.0
+  url_launcher: ^6.3.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/config/
