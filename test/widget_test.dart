@@ -20,6 +20,7 @@ void main() {
     final dependencies = await AppDependencies.create(
       enableConnectivityMonitoring: false,
       enableVersionGate: false,
+      enableClientTelemetry: false,
     );
     await tester.pumpWidget(AppBootstrap(dependencies: dependencies));
     await tester.pump();

@@ -10,8 +10,13 @@ import 'package:flutter_template/features/posts/data/datasources/posts_remote_da
 import 'package:flutter_template/features/posts/data/repositories/posts_repository_impl.dart';
 import 'package:flutter_template/features/posts/domain/repositories/posts_repository.dart';
 import 'package:flutter_template/features/update/data/datasources/version_policy_datasource.dart';
+import 'package:flutter_template/features/notifications/data/datasources/local_notification_datasource.dart';
+import 'package:flutter_template/features/notifications/data/repositories/notification_repository_impl.dart';
+import 'package:flutter_template/features/notifications/domain/repositories/notification_repository.dart';
 import 'package:flutter_template/features/update/data/repositories/version_policy_repository_impl.dart';
 import 'package:flutter_template/features/update/domain/repositories/version_policy_repository.dart';
+import 'package:flutter_template/core/telemetry/client_telemetry_poster.dart';
+import 'package:flutter_template/core/telemetry/public_ip_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppDependencies {
@@ -23,6 +28,10 @@ class AppDependencies {
     required this.sharedPreferences,
     required this.networkGate,
     required this.versionPolicyRepository,
+    required this.notificationRepository,
+    required this.clientTelemetryPoster,
+    required this.publicIpService,
+    required this.enableClientTelemetry,
     required this.enableConnectivityMonitoring,
     required this.enableVersionGate,
   });
@@ -34,12 +43,17 @@ class AppDependencies {
   final SharedPreferences sharedPreferences;
   final NetworkGate networkGate;
   final VersionPolicyRepository versionPolicyRepository;
+  final NotificationRepository notificationRepository;
+  final ClientTelemetryPoster clientTelemetryPoster;
+  final PublicIpService publicIpService;
+  final bool enableClientTelemetry;
   final bool enableConnectivityMonitoring;
   final bool enableVersionGate;
 
   static Future<AppDependencies> create({
     bool enableConnectivityMonitoring = true,
     bool enableVersionGate = true,
+    bool enableClientTelemetry = true,
   }) async {
     final prefs = await SharedPreferences.getInstance();
     final local = AuthLocalDataSource(prefs);
@@ -59,6 +73,16 @@ class AppDependencies {
     final versionDataSource = VersionPolicyDataSource(plainDio);
     final versionPolicyRepository = VersionPolicyRepositoryImpl(versionDataSource);
 
+    final localNotifications = LocalNotificationDataSource();
+    final notificationRepository = NotificationRepositoryImpl(localNotifications);
+
+    final publicIpService = PublicIpService();
+    final clientTelemetryPoster = ClientTelemetryPoster(
+      apiClient,
+      publicIpService,
+      enabled: enableClientTelemetry,
+    );
+
     return AppDependencies._(
       authRepository: authRepository,
       authLocalDataSource: local,
@@ -67,6 +91,10 @@ class AppDependencies {
       sharedPreferences: prefs,
       networkGate: networkGate,
       versionPolicyRepository: versionPolicyRepository,
+      notificationRepository: notificationRepository,
+      clientTelemetryPoster: clientTelemetryPoster,
+      publicIpService: publicIpService,
+      enableClientTelemetry: enableClientTelemetry,
       enableConnectivityMonitoring: enableConnectivityMonitoring,
       enableVersionGate: enableVersionGate,
     );

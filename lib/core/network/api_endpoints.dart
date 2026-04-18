@@ -11,4 +11,8 @@ abstract final class ApiEndpoints {
   /// Optional HTTPS JSON document with the same shape as [assets/config/version_policy.json].
   /// Leave empty to ship with asset-only policy (recommended until you host a real endpoint).
   static const String remoteVersionPolicyUrl = '';
+
+  /// POST JSON for navigation + in-app actions (see [ClientTelemetryPoster]).
+  /// Default uses JSONPlaceholder so the template runs without your backend; replace with e.g. `/v1/client-events`.
+  static const String clientTelemetryPath = '/posts';
 }

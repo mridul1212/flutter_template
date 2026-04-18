@@ -1,105 +1,56 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_template/core/di/app_dependencies.dart';
 import 'package:flutter_template/features/auth/domain/entities/user_entity.dart';
-import 'package:flutter_template/features/home/presentation/cubit/dashboard_cubit.dart';
-import 'package:flutter_template/features/home/presentation/cubit/home_nav_cubit.dart';
-import 'package:flutter_template/features/home/presentation/pages/dashboard_tab.dart';
+import 'package:flutter_template/presentation/router/app_route_paths.dart';
 import 'package:flutter_template/presentation/router/app_router_cubit.dart';
 import 'package:flutter_template/presentation/theme/theme_cubit.dart';
+import 'package:go_router/go_router.dart';
 
-class HomeShell extends StatelessWidget {
-  const HomeShell({super.key, required this.dependencies, required this.user});
+/// Bottom navigation + [StatefulNavigationShell] from [go_router].
+class HomeShellView extends StatelessWidget {
+  const HomeShellView({super.key, required this.navigationShell});
 
-  final AppDependencies dependencies;
-  final UserEntity user;
-
-  @override
-  Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_) => HomeNavCubit()),
-        BlocProvider(
-          create: (_) => DashboardCubit(dependencies.postsRepository)..loadSample(),
-        ),
-      ],
-      child: _HomeBody(user: user),
-    );
-  }
-}
-
-class _HomeBody extends StatelessWidget {
-  const _HomeBody({required this.user});
-
-  final UserEntity user;
+  final StatefulNavigationShell navigationShell;
 
   static const _titles = ['Home', 'Explore', 'Activity', 'Saved', 'Profile'];
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeNavCubit, int>(
-      builder: (context, index) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(_titles[index]),
-            actions: [
-              IconButton(
-                tooltip: 'Notifications',
-                onPressed: () {},
-                icon: const Icon(Icons.notifications_none_rounded),
-              ),
-            ],
+    final index = navigationShell.currentIndex;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(_titles[index]),
+        actions: [
+          IconButton(
+            tooltip: 'Notifications',
+            onPressed: () => context.push(AppRoutePaths.notifications),
+            icon: const Icon(Icons.notifications_none_rounded),
           ),
-          body: IndexedStack(
-            index: index,
-            sizing: StackFit.expand,
-            children: [
-              const RepaintBoundary(child: DashboardTab()),
-              const RepaintBoundary(
-                child: _PlaceholderTab(
-                  icon: Icons.travel_explore_rounded,
-                  text: 'Explore lists, maps, or discovery — boilerplate ready.',
-                ),
-              ),
-              const RepaintBoundary(
-                child: _PlaceholderTab(
-                  icon: Icons.timeline_rounded,
-                  text: 'Recent activity feed — hook your API later.',
-                ),
-              ),
-              const RepaintBoundary(
-                child: _PlaceholderTab(
-                  icon: Icons.bookmark_outline_rounded,
-                  text: 'Saved items — swap with real persistence.',
-                ),
-              ),
-              RepaintBoundary(child: _ProfileTab(user: user)),
-            ],
+        ],
+      ),
+      body: RepaintBoundary(child: navigationShell),
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: index,
+        onDestinationSelected: (i) => navigationShell.goBranch(i),
+        destinations: const [
+          NavigationDestination(icon: Icon(Icons.home_outlined), selectedIcon: Icon(Icons.home_rounded), label: 'Home'),
+          NavigationDestination(icon: Icon(Icons.explore_outlined), selectedIcon: Icon(Icons.explore), label: 'Explore'),
+          NavigationDestination(
+            icon: Icon(Icons.insights_outlined),
+            selectedIcon: Icon(Icons.show_chart_rounded),
+            label: 'Activity',
           ),
-          bottomNavigationBar: NavigationBar(
-            selectedIndex: index,
-            onDestinationSelected: context.read<HomeNavCubit>().setTab,
-            destinations: const [
-              NavigationDestination(icon: Icon(Icons.home_outlined), selectedIcon: Icon(Icons.home_rounded), label: 'Home'),
-              NavigationDestination(icon: Icon(Icons.explore_outlined), selectedIcon: Icon(Icons.explore), label: 'Explore'),
-              NavigationDestination(
-                icon: Icon(Icons.insights_outlined),
-                selectedIcon: Icon(Icons.show_chart_rounded),
-                label: 'Activity',
-              ),
-              NavigationDestination(icon: Icon(Icons.bookmark_border), selectedIcon: Icon(Icons.bookmark_rounded), label: 'Saved'),
-              NavigationDestination(icon: Icon(Icons.person_outline), selectedIcon: Icon(Icons.person_rounded), label: 'Profile'),
-            ],
-          ),
-        );
-      },
+          NavigationDestination(icon: Icon(Icons.bookmark_border), selectedIcon: Icon(Icons.bookmark_rounded), label: 'Saved'),
+          NavigationDestination(icon: Icon(Icons.person_outline), selectedIcon: Icon(Icons.person_rounded), label: 'Profile'),
+        ],
+      ),
     );
   }
 }
 
-class _PlaceholderTab extends StatelessWidget {
-  const _PlaceholderTab({required this.icon, required this.text});
+class HomePlaceholderTab extends StatelessWidget {
+  const HomePlaceholderTab({super.key, required this.icon, required this.text});
 
   final IconData icon;
   final String text;
@@ -130,13 +81,15 @@ class _PlaceholderTab extends StatelessWidget {
   }
 }
 
-class _ProfileTab extends StatelessWidget {
-  const _ProfileTab({required this.user});
-
-  final UserEntity user;
+class HomeProfileTab extends StatelessWidget {
+  const HomeProfileTab({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final user = context.select<AppRouterCubit, UserEntity?>((c) => c.state.user);
+    if (user == null) {
+      return const Center(child: CircularProgressIndicator());
+    }
     final scheme = Theme.of(context).colorScheme;
     final text = Theme.of(context).textTheme;
     final avatar = user.avatarUrl ?? '';
@@ -212,6 +165,15 @@ class _ProfileTab extends StatelessWidget {
               );
             },
           ),
+        ),
+        const SizedBox(height: 20),
+        ListTile(
+          contentPadding: EdgeInsets.zero,
+          leading: const Icon(Icons.notifications_outlined),
+          title: const Text('Notifications'),
+          subtitle: const Text('Permission, channels, test local alert'),
+          trailing: const Icon(Icons.chevron_right_rounded),
+          onTap: () => context.push(AppRoutePaths.notifications),
         ),
         const SizedBox(height: 28),
         Text('Dummy stats', style: text.titleMedium),

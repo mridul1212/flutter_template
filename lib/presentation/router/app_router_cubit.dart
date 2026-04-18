@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_template/core/navigation/deep_link_parser.dart';
 import 'package:flutter_template/features/auth/domain/entities/user_entity.dart';
 import 'package:flutter_template/features/auth/domain/repositories/auth_repository.dart';
 
@@ -34,6 +35,7 @@ class AppRouterCubit extends Cubit<AppRouterState> {
       : super(const AppRouterState(destination: AppDestination.splash));
 
   final AuthRepository _authRepository;
+  String? _pendingDeepLink;
 
   Future<void> resolveAfterSplash() async {
     final valid = await _authRepository.isSessionValid();
@@ -73,5 +75,18 @@ class AppRouterCubit extends Cubit<AppRouterState> {
   Future<void> logout() async {
     await _authRepository.logout();
     emit(state.copyWith(destination: AppDestination.login, clearUser: true));
+  }
+
+  /// Queues a path until the user reaches [AppDestination.home] (e.g. cold start + login).
+  void queueDeepLink(String location) {
+    final path = location.split('?').first;
+    if (!DeepLinkParser.isKnownAuthenticatedPath(path)) return;
+    _pendingDeepLink = path;
+  }
+
+  String? consumePendingDeepLink() {
+    final pending = _pendingDeepLink;
+    _pendingDeepLink = null;
+    return pending;
   }
 }
