@@ -30,9 +30,52 @@ abstract final class Validators {
     return null;
   }
 
-  static String? optionalConfirmPassword(String? password, String? confirm) {
-    if (confirm == null || confirm.isEmpty) return 'Confirm your password';
-    if (password != confirm) return 'Passwords do not match';
+  static String? district(String? value) {
+    final v = value?.trim() ?? '';
+    if (v.isEmpty) return 'District is required';
+    return null;
+  }
+
+  static String? dateOfBirth(String? value) {
+    final v = value?.trim() ?? '';
+    if (v.isEmpty) return 'Date of birth is required';
+    final parsed = DateTime.tryParse(v);
+    if (parsed == null) return 'Use format YYYY-MM-DD';
+    if (parsed.isAfter(DateTime.now())) return 'Date cannot be in the future';
+    return null;
+  }
+
+  static String? birthTime(String? value) {
+    final v = value?.trim() ?? '';
+    if (v.isEmpty) return null;
+    if (!RegExp(r'^\d{1,2}:\d{2}$').hasMatch(v)) return 'Use format HH:MM (24h)';
+    final parts = v.split(':');
+    final h = int.tryParse(parts[0]) ?? -1;
+    final m = int.tryParse(parts[1]) ?? -1;
+    if (h < 0 || h > 23 || m < 0 || m > 59) return 'Invalid time';
+    return null;
+  }
+
+  static String? deliveryAddress(String? value) {
+    final v = value?.trim() ?? '';
+    if (v.length < 10) return 'Enter a full delivery address';
+    return null;
+  }
+
+  static String? codPhone(String? value) {
+    final digits = RegExp(r'\d').allMatches(value ?? '').map((m) => m.group(0)!).join();
+    if (digits.length < 11) return 'Enter a valid Bangladesh phone (11 digits)';
+    return null;
+  }
+
+  static String? rating(int? value) {
+    if (value == null || value < 1 || value > 5) return 'Select a rating (1–5 stars)';
+    return null;
+  }
+
+  static String? reviewComment(String? value) {
+    final v = value?.trim() ?? '';
+    if (v.length < 10) return 'Write at least 10 characters';
     return null;
   }
 }

@@ -7,39 +7,29 @@ sealed class AuthEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-final class AuthLoginEmailSubmitted extends AuthEvent {
-  const AuthLoginEmailSubmitted({required this.email, required this.password});
-  final String email;
-  final String password;
-
-  @override
-  List<Object?> get props => [email, password];
-}
-
-final class AuthRegisterEmailSubmitted extends AuthEvent {
-  const AuthRegisterEmailSubmitted({
-    required this.name,
-    required this.email,
-    required this.password,
-  });
-  final String name;
-  final String email;
-  final String password;
-
-  @override
-  List<Object?> get props => [name, email, password];
-}
-
 final class AuthGoogleDummySubmitted extends AuthEvent {
   const AuthGoogleDummySubmitted();
 }
 
-final class AuthPhoneDummySubmitted extends AuthEvent {
-  const AuthPhoneDummySubmitted(this.phone);
-  final String phone;
+final class AuthProfileCompletionSubmitted extends AuthEvent {
+  const AuthProfileCompletionSubmitted({
+    required this.name,
+    required this.district,
+    required this.dateOfBirth,
+    this.timeOfBirth,
+    this.birthPlace,
+    this.gender,
+  });
+
+  final String name;
+  final String district;
+  final String dateOfBirth;
+  final String? timeOfBirth;
+  final String? birthPlace;
+  final String? gender;
 
   @override
-  List<Object?> get props => [phone];
+  List<Object?> get props => [name, district, dateOfBirth, timeOfBirth, birthPlace, gender];
 }
 
 final class AuthLogoutRequested extends AuthEvent {

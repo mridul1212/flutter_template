@@ -1,0 +1,11 @@
+{
+  "title": "Pujo Shopping",
+  "subtitle": "2026 festive shopping list & deals",
+  "year": 2026,
+  "items": [
+    {"title": "Saree & ethnic wear", "subtitle": "Gariahat / New Market", "detail": "Shop before Shashthi for best discounts", "tag": "Fashion"},
+    {"title": "Jewellery & accessories", "subtitle": "Gold & imitation", "detail": "Light jewellery for sindoor khela & pandal visits", "tag": "Gifts"},
+    {"title": "Home décor", "subtitle": "Alpana & lights", "detail": "Diya, fairy lights, marigold garlands", "tag": "Decor"},
+    {"title": "Sweet & bhog supplies", "subtitle": "Misti & fruits", "detail": "Sandesh, rosogolla, fruits for prasad", "tag": "Food"}
+  ]
+}

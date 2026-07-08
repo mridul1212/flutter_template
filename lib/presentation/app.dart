@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template/core/di/app_dependencies.dart';
 import 'package:flutter_template/core/navigation/app_navigator.dart';
@@ -9,7 +10,11 @@ import 'package:flutter_template/features/auth/presentation/bloc/auth_bloc.dart'
 import 'package:flutter_template/features/auth/presentation/bloc/auth_state.dart';
 import 'package:flutter_template/features/notifications/presentation/cubit/notification_cubit.dart';
 import 'package:flutter_template/features/notifications/presentation/cubit/notification_state.dart';
+import 'package:flutter_template/features/ponjika/presentation/cubit/ponjika_cubit.dart';
+import 'package:flutter_template/l10n/app_localizations.dart';
+import 'package:flutter_template/features/settings/presentation/cubit/settings_cubit.dart';
 import 'package:flutter_template/presentation/connectivity/connectivity_cubit.dart';
+import 'package:flutter_template/presentation/locale/locale_cubit.dart';
 import 'package:flutter_template/presentation/router/app_router_cubit.dart';
 import 'package:flutter_template/presentation/router/deep_link_binder.dart';
 import 'package:flutter_template/presentation/router/go_app_router.dart';
@@ -28,6 +33,13 @@ class AppBootstrap extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => ThemeCubit(dependencies.sharedPreferences)),
+        BlocProvider(create: (_) => LocaleCubit(dependencies.sharedPreferences)),
+        BlocProvider(
+          create: (_) => SettingsCubit(
+            dependencies.sharedPreferences,
+            dependencies.locationPermissionService,
+          ),
+        ),
         BlocProvider(
           create: (_) => ConnectivityCubit(
             gate: dependencies.networkGate,
@@ -46,6 +58,13 @@ class AppBootstrap extends StatelessWidget {
           create: (_) {
             final cubit = NotificationCubit(dependencies.notificationRepository);
             cubit.bootstrap();
+            return cubit;
+          },
+        ),
+        BlocProvider(
+          create: (_) {
+            final cubit = PonjikaCubit(dependencies.ponjikaRepository, dependencies.sharedPreferences);
+            cubit.load();
             return cubit;
           },
         ),
@@ -103,91 +122,103 @@ class _GoRouterAppState extends State<_GoRouterApp> {
       },
       child: BlocBuilder<ThemeCubit, ThemeMode>(
         builder: (context, themeMode) {
-          return MaterialApp.router(
-            routerConfig: _router,
-            scaffoldMessengerKey: AppNavigator.scaffoldMessengerKey,
-            title: 'Flutter Template',
-            debugShowCheckedModeBanner: false,
-            theme: AppTheme.light(),
-            darkTheme: AppTheme.dark(),
-            themeMode: themeMode,
-            builder: (context, child) {
-              return DeepLinkBinder(
-                router: _router,
-                appRouterCubit: widget.appRouterCubit,
-                child: BlocListener<AppRouterCubit, AppRouterState>(
-                  listenWhen: (p, c) =>
-                      c.destination == AppDestination.home &&
-                      c.user != null &&
-                      (p.destination != AppDestination.home || p.user?.id != c.user?.id),
-                  listener: (context, state) {
-                    final pending = widget.appRouterCubit.consumePendingDeepLink();
-                    if (pending != null) {
-                      WidgetsBinding.instance.addPostFrameCallback((_) {
-                        if (!mounted) return;
-                        _router.go(pending);
-                      });
-                    }
-                  },
-                  child: BlocListener<NotificationCubit, NotificationState>(
-                    listenWhen: (p, c) =>
-                        c.lastInteraction != p.lastInteraction && c.lastInteraction != null,
-                    listener: (context, state) {
-                      final interaction = state.lastInteraction;
-                      if (interaction == null) return;
-                      final messenger = AppNavigator.scaffoldMessengerKey.currentState;
-                      final target = DeepLinkParser.notificationPayloadToLocation(interaction.payload);
-                      if (target != null) {
-                        _router.push(target);
-                      } else {
-                        final label = interaction.payload ?? interaction.notificationId ?? 'tap';
-                        messenger?.showSnackBar(
-                          SnackBar(
-                            content: Text('Notification: $label (${interaction.source.name})'),
-                            behavior: SnackBarBehavior.floating,
-                          ),
-                        );
-                      }
-                      context.read<NotificationCubit>().clearLastInteraction();
-                    },
-                    child: BlocListener<ConnectivityCubit, bool>(
-                      listenWhen: (previous, current) => previous != current,
-                      listener: (context, online) {
-                        final messenger = AppNavigator.scaffoldMessengerKey.currentState;
-                        if (!online) {
-                          messenger?.showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                'No network connection. API calls are paused until you reconnect.',
-                              ),
-                              behavior: SnackBarBehavior.floating,
-                              duration: Duration(seconds: 5),
-                            ),
-                          );
-                        } else {
-                          messenger?.hideCurrentSnackBar();
+          return BlocBuilder<LocaleCubit, Locale?>(
+            builder: (context, locale) {
+              return MaterialApp.router(
+                routerConfig: _router,
+                scaffoldMessengerKey: AppNavigator.scaffoldMessengerKey,
+                title: 'Durga Utsav',
+                debugShowCheckedModeBanner: false,
+                theme: AppTheme.light(),
+                darkTheme: AppTheme.dark(),
+                themeMode: themeMode,
+                locale: locale,
+                supportedLocales: AppLocalizations.supportedLocales,
+                localizationsDelegates: const [
+                  AppLocalizations.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                ],
+                builder: (context, child) {
+                  return DeepLinkBinder(
+                    router: _router,
+                    appRouterCubit: widget.appRouterCubit,
+                    child: BlocListener<AppRouterCubit, AppRouterState>(
+                      listenWhen: (p, c) =>
+                          c.destination == AppDestination.home &&
+                          c.user != null &&
+                          (p.destination != AppDestination.home || p.user?.id != c.user?.id),
+                      listener: (context, state) {
+                        final pending = widget.appRouterCubit.consumePendingDeepLink();
+                        if (pending != null) {
+                          WidgetsBinding.instance.addPostFrameCallback((_) {
+                            if (!mounted) return;
+                            _router.go(pending);
+                          });
                         }
                       },
-                      child: BlocBuilder<VersionGateCubit, VersionGateState>(
-                        builder: (context, versionState) {
-                          return Stack(
-                            fit: StackFit.expand,
-                            children: [
-                              child ?? const SizedBox.shrink(),
-                              if (versionState.isBlocking)
-                                Positioned.fill(
-                                  child: ForceUpdatePage(
-                                    storeUrl: versionState.storeUrl ?? Uri.parse('about:blank'),
-                                    message: versionState.message,
-                                  ),
-                                ),
-                            ],
-                          );
+                      child: BlocListener<NotificationCubit, NotificationState>(
+                        listenWhen: (p, c) =>
+                            c.lastInteraction != p.lastInteraction && c.lastInteraction != null,
+                        listener: (context, state) {
+                          final interaction = state.lastInteraction;
+                          if (interaction == null) return;
+                          final messenger = AppNavigator.scaffoldMessengerKey.currentState;
+                          final target = DeepLinkParser.notificationPayloadToLocation(interaction.payload);
+                          if (target != null) {
+                            _router.push(target);
+                          } else {
+                            final label = interaction.payload ?? interaction.notificationId ?? 'tap';
+                            messenger?.showSnackBar(
+                              SnackBar(
+                                content: Text('Notification: $label (${interaction.source.name})'),
+                                behavior: SnackBarBehavior.floating,
+                              ),
+                            );
+                          }
+                          context.read<NotificationCubit>().clearLastInteraction();
                         },
+                        child: BlocListener<ConnectivityCubit, bool>(
+                          listenWhen: (previous, current) => previous != current,
+                          listener: (context, online) {
+                            final messenger = AppNavigator.scaffoldMessengerKey.currentState;
+                            if (!online) {
+                              messenger?.showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                    'No network connection. API calls are paused until you reconnect.',
+                                  ),
+                                  behavior: SnackBarBehavior.floating,
+                                  duration: Duration(seconds: 5),
+                                ),
+                              );
+                            } else {
+                              messenger?.hideCurrentSnackBar();
+                            }
+                          },
+                          child: BlocBuilder<VersionGateCubit, VersionGateState>(
+                            builder: (context, versionState) {
+                              return Stack(
+                                fit: StackFit.expand,
+                                children: [
+                                  child ?? const SizedBox.shrink(),
+                                  if (versionState.isBlocking)
+                                    Positioned.fill(
+                                      child: ForceUpdatePage(
+                                        storeUrl: versionState.storeUrl ?? Uri.parse('about:blank'),
+                                        message: versionState.message,
+                                      ),
+                                    ),
+                                ],
+                              );
+                            },
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
+                  );
+                },
               );
             },
           );

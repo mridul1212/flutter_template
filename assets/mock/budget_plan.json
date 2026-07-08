@@ -1,0 +1,13 @@
+{
+  "title": "Budget Planning",
+  "subtitle": "Track your 2026 Pujo spending",
+  "year": 2026,
+  "currency": "৳",
+  "entries": [
+    {"id": "b1", "title": "Mandap contribution", "category": "Community", "planned": 3500, "spent": 2000, "note": "Monthly chanda for local barowari"},
+    {"id": "b2", "title": "Shopping & clothes", "category": "Shopping", "planned": 8000, "spent": 3200, "note": "Saree, gifts, home décor"},
+    {"id": "b3", "title": "Food & pandal hopping", "category": "Food", "planned": 2200, "spent": 800, "note": "Street food, bhog, transport"},
+    {"id": "b4", "title": "Donation & puja samagri", "category": "Ritual", "planned": 1500, "spent": 600, "note": "Flowers, prasad, temple donation"},
+    {"id": "b5", "title": "Transport & parking", "category": "Travel", "planned": 1200, "spent": 0, "note": "Auto, CNG, parking during hopping"}
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Pujo Soronjam",
+  "subtitle": "2026 puja essentials checklist",
+  "year": 2026,
+  "items": [
+    {"id": "s1", "title": "Durga idol & chalchitra", "category": "Mandap setup", "detail": "Confirm delivery before Mahalaya", "priority": "must"},
+    {"id": "s2", "title": "Dhak & dhunuchi", "category": "Sound & arati", "detail": "Book dhaki for Sandhya arati slots", "priority": "must"},
+    {"id": "s3", "title": "Pushpanjali flowers", "category": "Daily supply", "detail": "Lotus, bel patra, hibiscus for anjali", "priority": "daily"},
+    {"id": "s4", "title": "Bhog ingredients", "category": "Kitchen", "detail": "Rice, dal, vegetables for community bhog", "priority": "daily"},
+    {"id": "s5", "title": "Incense & dhoop", "category": "Ritual", "detail": "Stock for morning and evening puja", "priority": "daily"},
+    {"id": "s6", "title": "Prasad containers", "category": "Serving", "detail": "Leaf plates and cups for visitors", "priority": "optional"},
+    {"id": "s7", "title": "Sound system check", "category": "Events", "detail": "Mic, speakers for cultural programs", "priority": "optional"},
+    {"id": "s8", "title": "Security & barricade", "category": "Safety", "detail": "Crowd control for Shashthi & Ashtami", "priority": "must"}
+  ]
+}

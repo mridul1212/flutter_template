@@ -1,0 +1,43 @@
+{
+  "rooms": [
+    {
+      "id": "room_dhaka",
+      "name": "Dhaka Puja Group",
+      "subtitle": "1,240 members · Durga Puja 2026",
+      "lastMessage": "See you at Banani mandap at 7pm!",
+      "lastTime": "2m ago",
+      "unread": 3
+    },
+    {
+      "id": "room_chada",
+      "name": "Banani Chada Committee",
+      "subtitle": "42 members · Chada collection",
+      "lastMessage": "₹500 collected from Block B",
+      "lastTime": "1h ago",
+      "unread": 0
+    },
+    {
+      "id": "room_seller",
+      "name": "Shanti Bhandar (Seller)",
+      "subtitle": "Direct message",
+      "lastMessage": "Your COD order is confirmed.",
+      "lastTime": "Yesterday",
+      "unread": 1
+    }
+  ],
+  "messages": {
+    "room_dhaka": [
+      {"id": "m1", "sender": "Ananya", "text": "Anyone going to Banani mandap tonight?", "time": "6:42 PM", "isMe": false},
+      {"id": "m2", "sender": "You", "text": "Yes! Planning route with Puja Bandhu map.", "time": "6:45 PM", "isMe": true},
+      {"id": "m3", "sender": "Ravi", "text": "See you at Banani mandap at 7pm!", "time": "6:48 PM", "isMe": false}
+    ],
+    "room_chada": [
+      {"id": "m4", "sender": "Treasurer", "text": "Target: ৳25,000 by Shashthi", "time": "10:00 AM", "isMe": false},
+      {"id": "m5", "sender": "You", "text": "I'll transfer my share tomorrow.", "time": "10:15 AM", "isMe": true}
+    ],
+    "room_seller": [
+      {"id": "m6", "sender": "Shanti Bhandar", "text": "Your brass diya set is packed.", "time": "3:00 PM", "isMe": false},
+      {"id": "m7", "sender": "Shanti Bhandar", "text": "Your COD order is confirmed.", "time": "3:05 PM", "isMe": false}
+    ]
+  }
+}

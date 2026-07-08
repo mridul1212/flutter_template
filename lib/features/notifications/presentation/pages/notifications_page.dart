@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template/features/notifications/presentation/cubit/notification_cubit.dart';
 import 'package:flutter_template/features/notifications/presentation/cubit/notification_state.dart';
+import 'package:flutter_template/l10n/app_localizations.dart';
 
 class NotificationsPage extends StatefulWidget {
   const NotificationsPage({super.key});
@@ -21,8 +22,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context);
     return Scaffold(
-      appBar: AppBar(title: const Text('Notifications')),
+      appBar: AppBar(title: Text(t.notifications)),
       body: BlocConsumer<NotificationCubit, NotificationState>(
         listenWhen: (p, c) =>
             (c.message != null && c.message != p.message) ||
@@ -60,13 +62,13 @@ class _NotificationsPageState extends State<NotificationsPage> {
               FilledButton.icon(
                 onPressed: state.busy ? null : () => context.read<NotificationCubit>().requestPermission(),
                 icon: const Icon(Icons.notifications_active_outlined),
-                label: const Text('Request permission'),
+                label: Text(t.requestPermission),
               ),
               const SizedBox(height: 12),
               OutlinedButton.icon(
                 onPressed: state.busy ? null : () => context.read<NotificationCubit>().sendTestNotification(),
                 icon: const Icon(Icons.send_outlined),
-                label: const Text('Send test notification'),
+                label: Text(t.sendTestNotification),
               ),
             ],
           );

@@ -7,19 +7,20 @@ abstract class AuthRepository {
 
   Future<void> setOnboardingCompleted();
 
-  Future<UserEntity> loginWithEmail({required String email, required String password});
-
-  Future<UserEntity> registerWithEmail({
-    required String name,
-    required String email,
-    required String password,
-  });
-
   Future<UserEntity> loginWithGoogleDummy();
 
-  Future<UserEntity> loginWithPhoneDummy({required String phone});
+  Future<UserEntity> completeProfile({
+    required String name,
+    required String district,
+    required String dateOfBirth,
+    String? timeOfBirth,
+    String? birthPlace,
+    String? gender,
+  });
 
   Future<void> logout();
 
   Future<UserEntity?> getCachedUser();
+
+  Future<void> updateCachedUser(UserEntity user);
 }

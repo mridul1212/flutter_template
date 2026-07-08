@@ -1,0 +1,20 @@
+{
+  "sections": [
+    {
+      "title": "Puja Darshan",
+      "items": [
+        {"id": "mondop_1", "title": "Baghbazar Sarbojanin", "subtitle": "Theme: Traditional · Crowd: Medium", "tag": "Near you"},
+        {"id": "mondop_2", "title": "Kumartuli Park", "subtitle": "Theme: Artisan · Crowd: High", "tag": "Trending"},
+        {"id": "mondop_3", "title": "College Square", "subtitle": "Theme: Light & water · Crowd: Medium", "tag": "Popular"}
+      ]
+    },
+    {
+      "title": "Ponjika Highlights",
+      "items": [
+        {"id": "ponjika_today", "title": "আজকের তিথি", "subtitle": "শুভ লগ্ন ও অনঞ্জলি সময় দেখুন", "tag": "Daily"},
+        {"id": "ekadashi", "title": "Ekadoshi Chart", "subtitle": "Fast & timing reference", "tag": "Useful"}
+      ]
+    }
+  ]
+}
+
