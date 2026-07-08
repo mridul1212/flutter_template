@@ -1,0 +1,130 @@
+{
+  "city": "Bangladesh",
+  "defaultCenter": {"lat": 23.8103, "lng": 90.4125},
+  "items": [
+    {
+      "id": "bd1", "name": "Dhakeshwari Temple Mondop", "theme": "Traditional Ekchala", "area": "Dhaka", "lat": 23.7239, "lng": 90.3948,
+      "detail": {
+        "address": "Dhakeshwari Rd, Wari, Dhaka 1203",
+        "description": "One of the oldest Durga Puja mandaps in Dhaka with traditional ekchala idol and daily pushpanjali.",
+        "organizer": "Dhakeshwari Temple Committee",
+        "phone": "+880 1711-000001",
+        "capacity": "8,000+ visitors/day",
+        "parking": "Limited street parking on temple lane",
+        "timings": [
+          {"label": "Morning Darshan", "time": "06:00 AM"},
+          {"label": "Pushpanjali", "time": "08:30 AM"},
+          {"label": "Sandhya Arati", "time": "06:15 PM"}
+        ],
+        "highlights": ["Heritage mandap", "Traditional dhak", "Community bhog"]
+      }
+    },
+    {
+      "id": "bd2", "name": "Ramna Kali Mandir Puja", "theme": "Heritage Theme", "area": "Dhaka", "lat": 23.7336, "lng": 90.3928,
+      "detail": {
+        "address": "Ramna Park, Dhaka 1000",
+        "description": "Historic puja near Ramna Park with cultural programs and evening dhunuchi dance.",
+        "organizer": "Ramna Kali Mandir Sarbojanin",
+        "phone": "+880 1711-000002",
+        "capacity": "5,000+",
+        "parking": "Ramna Park side entrance",
+        "timings": [
+          {"label": "Anjali", "time": "07:10 AM"},
+          {"label": "Cultural show", "time": "08:00 PM"}
+        ],
+        "highlights": ["Park setting", "Evening cultural show"]
+      }
+    },
+    {
+      "id": "bd3", "name": "Dhanmondi Sarbojanin", "theme": "Artistic Pandal", "area": "Dhaka", "lat": 23.7461, "lng": 90.3745,
+      "detail": {
+        "address": "Dhanmondi Lake area, Dhaka",
+        "description": "Modern artistic pandal with lighting installations popular with families.",
+        "organizer": "Dhanmondi Puja Committee",
+        "phone": "+880 1711-000003",
+        "timings": [
+          {"label": "Pandal open", "time": "10:00 AM – 11:00 PM"},
+          {"label": "Sandhi Puja", "time": "12:06 PM (Ashtami)"}
+        ],
+        "highlights": ["Art pandal", "Lake-side location", "Food stalls"]
+      }
+    },
+    {
+      "id": "bd4", "name": "Gulshan Banani Puja", "theme": "Modern Lighting", "area": "Dhaka", "lat": 23.7808, "lng": 90.4125,
+      "detail": {
+        "address": "Gulshan Ave, Dhaka",
+        "description": "Premium lighting and contemporary theme mandap in north Dhaka.",
+        "organizer": "Gulshan Banani Sarbojanin",
+        "phone": "+880 1711-000004",
+        "timings": [{"label": "Evening visit peak", "time": "07:00 – 10:00 PM"}],
+        "highlights": ["LED theme", "Family friendly"]
+      }
+    },
+    {
+      "id": "bd5", "name": "Old Dhaka Shankhari Bazaar", "theme": "Old Dhaka Classic", "area": "Dhaka", "lat": 23.7104, "lng": 90.4074,
+      "detail": {
+        "address": "Shankhari Bazaar, Old Dhaka",
+        "description": "Classic Old Dhaka puja atmosphere with narrow lanes and traditional artisans.",
+        "organizer": "Shankhari Bazaar Puja",
+        "phone": "+880 1711-000005",
+        "timings": [{"label": "Morning arati", "time": "06:30 AM"}],
+        "highlights": ["Old Dhaka vibe", "Heritage lane"]
+      }
+    },
+    {
+      "id": "bd6", "name": "ANDARKilla Durga Puja", "theme": "Grand Chattogram", "area": "Chattogram", "lat": 22.3344, "lng": 91.8324,
+      "detail": {
+        "address": "ANDARKilla, Chattogram",
+        "description": "Grand coastal city mandap with large crowd during Shashthi to Dashami.",
+        "organizer": "ANDARKilla Puja Committee",
+        "phone": "+880 1711-000006",
+        "timings": [{"label": "Sandhya Arati", "time": "06:30 PM"}],
+        "highlights": ["Grand pandal", "Coastal crowd"]
+      }
+    },
+    {
+      "id": "bd7", "name": "Pahartali Sarbojanin", "theme": "Coastal Theme", "area": "Chattogram", "lat": 22.3569, "lng": 91.7832,
+      "detail": {
+        "address": "Pahartali, Chattogram",
+        "description": "Neighbourhood sarbojanin with sea-breeze themed décor.",
+        "organizer": "Pahartali Committee",
+        "phone": "+880 1711-000007",
+        "timings": [{"label": "Evening darshan", "time": "05:00 – 10:00 PM"}],
+        "highlights": ["Coastal theme", "Local bhog"]
+      }
+    },
+    {
+      "id": "bd8", "name": "Sylhet Bondor Bazar Mondop", "theme": "Tea Garden Style", "area": "Sylhet", "lat": 24.8949, "lng": 91.8687,
+      "detail": {
+        "address": "Bondor Bazar, Sylhet",
+        "description": "Tea-garden inspired mandap celebrating Sylheti culture.",
+        "organizer": "Bondor Bazar Puja",
+        "phone": "+880 1711-000008",
+        "timings": [{"label": "Anjali", "time": "07:30 AM"}],
+        "highlights": ["Tea garden décor", "Sylheti music"]
+      }
+    },
+    {
+      "id": "bd9", "name": "Rajshahi Padma Mondop", "theme": "Riverbank Puja", "area": "Rajshahi", "lat": 24.3740, "lng": 88.6011,
+      "detail": {
+        "address": "Padma riverbank area, Rajshahi",
+        "description": "Riverbank themed pandal with open sky arati.",
+        "organizer": "Rajshahi Padma Puja",
+        "phone": "+880 1711-000009",
+        "timings": [{"label": "Sandhya Arati", "time": "06:00 PM"}],
+        "highlights": ["River view", "Open mandap"]
+      }
+    },
+    {
+      "id": "bd10", "name": "Khulna City Sarbojanin", "theme": "Eco Friendly", "area": "Khulna", "lat": 22.8456, "lng": 89.5403,
+      "detail": {
+        "address": "Khulna city center",
+        "description": "Eco-friendly pandal using recycled materials and solar lighting.",
+        "organizer": "Khulna Sarbojanin",
+        "phone": "+880 1711-000010",
+        "timings": [{"label": "Pandal hours", "time": "11:00 AM – 10:30 PM"}],
+        "highlights": ["Eco theme", "Solar lights"]
+      }
+    }
+  ]
+}

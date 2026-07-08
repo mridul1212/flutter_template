@@ -1,0 +1,26 @@
+{
+  "reviews": {
+    "bd1": {
+      "averageRating": 4.8,
+      "reviewCount": 124,
+      "items": [
+        {"id": "r1", "user": "Ananya R.", "rating": 5, "comment": "Beautiful traditional mandap. Pushpanjali was well organized.", "date": "2025-10-12"},
+        {"id": "r2", "user": "Ravi K.", "rating": 4, "comment": "Crowded on Ashtami but worth the visit. Heritage feel.", "date": "2025-10-11"}
+      ]
+    },
+    "bd2": {
+      "averageRating": 4.5,
+      "reviewCount": 89,
+      "items": [
+        {"id": "r3", "user": "Priya S.", "rating": 5, "comment": "Evening cultural show was amazing near Ramna Park.", "date": "2025-10-10"}
+      ]
+    },
+    "bd3": {
+      "averageRating": 4.6,
+      "reviewCount": 210,
+      "items": [
+        {"id": "r4", "user": "Dev M.", "rating": 5, "comment": "Best art pandal in Dhanmondi. Great for families.", "date": "2025-10-09"}
+      ]
+    }
+  }
+}

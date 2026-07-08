@@ -1,0 +1,154 @@
+{
+  "year": 2026,
+  "bengaliYear": "1433",
+  "today": {
+    "date": "2026-05-28",
+    "bengaliDate": "১৪ জ্যৈষ্ঠ, ১৪৩৩",
+    "tithi": "Tritiya",
+    "paksha": "Shukla",
+    "nakshatra": "Mrigashira",
+    "sunrise": "05:18 AM",
+    "sunset": "06:35 PM",
+    "moonrise": "09:42 AM"
+  },
+  "durgaPujaDays": [
+    {
+      "title": "Mahalaya",
+      "date": "2026-10-02",
+      "tag": "মহালয়া",
+      "bengaliDay": "১৬ আশ্বিন",
+      "events": [
+        {"time": "04:00 AM", "name": "Chandipath", "badge": "special"},
+        {"time": "06:00 AM", "name": "Tarpan", "badge": "ritual"}
+      ]
+    },
+    {
+      "title": "Maha Shashthi",
+      "date": "2026-10-19",
+      "tag": "ষষ্ঠী",
+      "bengaliDay": "৩ আশ্বিন",
+      "events": [
+        {"time": "06:00 AM", "name": "Bodhon & Kalparambha", "badge": "special"},
+        {"time": "07:10 AM", "name": "Shashthi Anjali", "badge": "anjali"}
+      ]
+    },
+    {
+      "title": "Maha Saptami",
+      "date": "2026-10-20",
+      "tag": "সপ্তমী",
+      "bengaliDay": "৪ আশ্বিন",
+      "events": [
+        {"time": "06:15 AM", "name": "Nabapatrika Snan", "badge": "ritual"},
+        {"time": "07:00 AM", "name": "Saptami Puja", "badge": "puja"}
+      ]
+    },
+    {
+      "title": "Maha Ashtami",
+      "date": "2026-10-21",
+      "tag": "অষ্টমী",
+      "bengaliDay": "৫ আশ্বিন",
+      "events": [
+        {"time": "06:30 AM", "name": "Ashtami Anjali", "badge": "anjali"},
+        {"time": "12:06 PM", "name": "Sandhi Puja", "badge": "special"},
+        {"time": "08:00 PM", "name": "Sandhya Arati", "badge": "arati"}
+      ]
+    },
+    {
+      "title": "Maha Nabami",
+      "date": "2026-10-22",
+      "tag": "নবমী",
+      "bengaliDay": "৬ আশ্বিন",
+      "events": [
+        {"time": "06:30 AM", "name": "Nabami Anjali", "badge": "anjali"},
+        {"time": "11:00 AM", "name": "Bhog & Pushpanjali", "badge": "puja"}
+      ]
+    },
+    {
+      "title": "Vijaya Dashami",
+      "date": "2026-10-23",
+      "tag": "দশমী",
+      "bengaliDay": "৭ আশ্বিন",
+      "events": [
+        {"time": "08:00 AM", "name": "Sindoor Khela", "badge": "special"},
+        {"time": "04:00 PM", "name": "Visarjan", "badge": "ritual"}
+      ]
+    }
+  ],
+  "logno": {
+    "puja": {
+      "title": "পূজা লগ্ন (2026)",
+      "subtitle": "Anjali, pushpanjali, mandap visit & new puja work",
+      "tips": ["Best for Shashthi anjali before 09:00 AM", "Sandhi Puja window is very short — plan early"],
+      "slots": [
+        {"name": "Brahma Muhurta", "time": "04:24–05:18", "quality": "best", "note": "Ideal for meditation & puja prep"},
+        {"name": "Abhijit Muhurta", "time": "11:49–12:37", "quality": "best", "note": "Best for new puja & anjali"},
+        {"name": "Amrit Kalam", "time": "15:10–16:22", "quality": "good", "note": "Good for shopping & offerings"},
+        {"name": "Vijaya Muhurta", "time": "14:02–14:50", "quality": "good", "note": "Auspicious for travel to pandals"}
+      ],
+      "timings": [
+        {"name": "Pratah Puja", "time": "06:00 AM", "deity": "Durga", "note": "Morning darshan & pushpanjali"},
+        {"name": "Madhyahna Bhog", "time": "12:30 PM", "deity": "Durga", "note": "Midday offering at mandap"},
+        {"name": "Sandhya Arati", "time": "06:15 PM", "deity": "Durga", "note": "Evening dhunuchi & dhak"},
+        {"name": "Shayani Puja", "time": "09:30 PM", "deity": "Durga", "note": "Night arati at select mondops"}
+      ]
+    },
+    "marriage": {
+      "title": "বিয়ে লগ্ন (2026)",
+      "subtitle": "Shubho bibaho muhurta — engagement, wedding & gaye holud",
+      "tips": ["Confirm with local pandit for exact lagna", "Avoid Rahu Kalam for vidhi start"],
+      "slots": [
+        {"name": "Shubha Vivah Muhurta", "time": "09:18–10:42 AM", "quality": "best", "note": "Ideal for wedding rituals"},
+        {"name": "Gaye Holud Window", "time": "11:05–12:20 PM", "quality": "good", "note": "Haldi & family ceremonies"},
+        {"name": "Engagement Lagna", "time": "04:30–05:45 PM", "quality": "good", "note": "Ring exchange & ashirbad"},
+        {"name": "Evening Reception", "time": "07:15–08:40 PM", "quality": "fair", "note": "Reception start — not for sacred fire"}
+      ]
+    },
+    "beye": {
+      "title": "বেয়ে / অশুভ সময়",
+      "subtitle": "Rahu, Gulika, Yamaghanda — avoid puja, travel & new work",
+      "tips": ["Do not start anjali during Dur Muhurta", "Reschedule important meetings outside these windows"],
+      "items": [
+        {"name": "Rahu Kalam", "time": "10:30 AM–12:00 PM", "note": "Avoid starting new work", "category": "rahu"},
+        {"name": "Gulika Kalam", "time": "12:00–01:30 PM", "note": "Inauspicious for puja", "category": "gulika"},
+        {"name": "Yamaghanda", "time": "07:30–09:00 AM", "note": "Avoid important decisions", "category": "yama"},
+        {"name": "Dur Muhurta (Beye)", "time": "12:37–01:25 PM", "note": "বেয়ে — avoid anjali & travel", "category": "beye"}
+      ]
+    },
+    "monthlyHighlights": [
+      {"month": "June 2026", "highlights": ["Nirjala Ekadashi — strict fasting", "Gayatri Jayanti puja window"]},
+      {"month": "October 2026", "highlights": ["Shashthi Anjali — 07:10 AM", "Sandhi Puja — 12:06 PM on Ashtami", "Best pandal hopping after Sandhya Arati"]},
+      {"month": "November 2026", "highlights": ["Kali Puja evening logno", "Bhai Phonta morning muhurta"]}
+    ]
+  },
+  "ekadashi": {
+    "year": 2026,
+    "upcomingName": "Nirjala Ekadashi",
+    "upcomingDate": "2026-06-14",
+    "items": [
+      {"name": "Saphala Ekadashi", "date": "2026-01-15", "paksha": "Krishna", "parana": "2026-01-16 07:12", "vrataType": "standard", "note": "Pausha Krishna Ekadashi"},
+      {"name": "Putrada Ekadashi", "date": "2026-01-30", "paksha": "Shukla", "parana": "2026-01-31 07:05", "vrataType": "standard", "note": "Pausha Shukla Ekadashi"},
+      {"name": "Shattila Ekadashi", "date": "2026-02-13", "paksha": "Krishna", "parana": "2026-02-14 06:58", "vrataType": "standard", "note": "Magha Krishna Ekadashi"},
+      {"name": "Jaya Ekadashi", "date": "2026-02-28", "paksha": "Shukla", "parana": "2026-03-01 06:50", "vrataType": "standard", "note": "Magha Shukla Ekadashi"},
+      {"name": "Vijaya Ekadashi", "date": "2026-03-15", "paksha": "Krishna", "parana": "2026-03-16 06:42", "vrataType": "standard", "note": "Phalguna Krishna Ekadashi"},
+      {"name": "Amalaki Ekadashi", "date": "2026-03-30", "paksha": "Shukla", "parana": "2026-03-31 06:35", "vrataType": "standard", "note": "Phalguna Shukla Ekadashi"},
+      {"name": "Papamochani Ekadashi", "date": "2026-04-14", "paksha": "Krishna", "parana": "2026-04-15 06:28", "vrataType": "standard", "note": "Chaitra Krishna Ekadashi"},
+      {"name": "Kamada Ekadashi", "date": "2026-04-29", "paksha": "Shukla", "parana": "2026-04-30 06:20", "vrataType": "standard", "note": "Chaitra Shukla Ekadashi"},
+      {"name": "Varuthini Ekadashi", "date": "2026-05-14", "paksha": "Krishna", "parana": "2026-05-15 06:12", "vrataType": "standard", "note": "Vaishakha Krishna Ekadashi"},
+      {"name": "Mohini Ekadashi", "date": "2026-05-29", "paksha": "Shukla", "parana": "2026-05-30 06:05", "vrataType": "standard", "note": "Vaishakha Shukla Ekadashi"},
+      {"name": "Nirjala Ekadashi", "date": "2026-06-14", "paksha": "Shukla", "parana": "2026-06-15 07:18", "vrataType": "nirjala", "note": "Strict waterless fast — Jyeshtha Shukla"},
+      {"name": "Yogini Ekadashi", "date": "2026-06-29", "paksha": "Krishna", "parana": "2026-06-30 06:55", "vrataType": "standard", "note": "Ashadha Krishna Ekadashi"},
+      {"name": "Devshayani Ekadashi", "date": "2026-07-14", "paksha": "Shukla", "parana": "2026-07-15 07:02", "vrataType": "standard", "note": "Chaturmas begins — Lord Vishnu rests"},
+      {"name": "Kamika Ekadashi", "date": "2026-07-29", "paksha": "Krishna", "parana": "2026-07-30 06:48", "vrataType": "standard", "note": "Shravan Krishna Ekadashi"},
+      {"name": "Shravana Putrada Ekadashi", "date": "2026-08-13", "paksha": "Shukla", "parana": "2026-08-14 06:40", "vrataType": "standard", "note": "Shravan Shukla Ekadashi"},
+      {"name": "Aja Ekadashi", "date": "2026-08-28", "paksha": "Krishna", "parana": "2026-08-29 06:32", "vrataType": "standard", "note": "Bhadrapada Krishna Ekadashi"},
+      {"name": "Parsva Ekadashi", "date": "2026-09-12", "paksha": "Shukla", "parana": "2026-09-13 06:25", "vrataType": "standard", "note": "Bhadrapada Shukla Ekadashi"},
+      {"name": "Indira Ekadashi", "date": "2026-09-27", "paksha": "Krishna", "parana": "2026-09-28 06:18", "vrataType": "standard", "note": "Ashwin Krishna — Pitru paksha"},
+      {"name": "Papankusha Ekadashi", "date": "2026-10-12", "paksha": "Shukla", "parana": "2026-10-13 06:10", "vrataType": "standard", "note": "During Durga Puja season"},
+      {"name": "Rama Ekadashi", "date": "2026-10-27", "paksha": "Krishna", "parana": "2026-10-28 06:02", "vrataType": "standard", "note": "Post-Dashami fasting day"},
+      {"name": "Devutthana Ekadashi", "date": "2026-11-11", "paksha": "Shukla", "parana": "2026-11-12 06:55", "vrataType": "standard", "note": "Prabodhini — Vishnu awakens"},
+      {"name": "Utpanna Ekadashi", "date": "2026-11-26", "paksha": "Krishna", "parana": "2026-11-27 06:48", "vrataType": "standard", "note": "Kartik Krishna Ekadashi"},
+      {"name": "Mokshada Ekadashi", "date": "2026-12-11", "paksha": "Shukla", "parana": "2026-12-12 07:00", "vrataType": "standard", "note": "Gita Jayanti — Margashirsha Shukla"},
+      {"name": "Saphala Ekadashi", "date": "2026-12-26", "paksha": "Krishna", "parana": "2026-12-27 07:08", "vrataType": "standard", "note": "Year-end Krishna Ekadashi"}
+    ]
+  }
+}

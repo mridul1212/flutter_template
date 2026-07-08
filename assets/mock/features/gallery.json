@@ -1,0 +1,11 @@
+{
+  "title": "Gallery",
+  "subtitle": "2026 pandal photos & memories",
+  "year": 2026,
+  "items": [
+    {"title": "Theme pandal shots", "subtitle": "12 photos", "detail": "Artistic pandals from Kumartuli to Salt Lake", "tag": "Photos"},
+    {"title": "Anjali moments", "subtitle": "8 photos", "detail": "Pushpanjali & dhunuchi arati captures", "tag": "Ritual"},
+    {"title": "Sindoor Khela", "subtitle": "24 photos", "detail": "Dashami morning celebrations", "tag": "Festival"},
+    {"title": "Immersion night", "subtitle": "16 photos", "detail": "Visarjan procession & dhak", "tag": "Event"}
+  ]
+}

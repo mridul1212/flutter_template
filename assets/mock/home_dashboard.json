@@ -1,0 +1,36 @@
+{
+  "countdown": {
+    "title": "শুভ দুর্গা পূজা",
+    "subtitle": "Countdown to Durga Puja",
+    "target": "2026-10-19T00:00:00+06:00",
+    "temperatureC": 28,
+    "tithi": "Shashti",
+    "bengaliDate": "২৫শে আশ্বিন, ১৪৩৩"
+  },
+  "calendarHighlights": {
+    "year": 2026,
+    "bengaliDate": "১৪ জ্যৈষ্ঠ, ১৪৩৩",
+    "tithi": "Tritiya • Shukla",
+    "bestLogno": "Abhijit 11:49–12:37",
+    "nextEkadashi": "Nirjala Ekadashi",
+    "nextEkadashiDate": "2026-06-14",
+    "pujaCountdownDays": 144
+  },
+  "featuresTitle": "Explore Features",
+  "features": [
+    {"id": "darshan", "title": "Puja Darshan", "subtitle": "Find Mondops", "icon": "temple"},
+    {"id": "nearby", "title": "Nearby Mondop", "subtitle": "Within 5km", "icon": "pin"},
+    {"id": "ponjika", "title": "Ponjika", "subtitle": "Bengali Calendar", "icon": "calendar"},
+    {"id": "logno", "title": "Logno", "subtitle": "Auspicious Time", "icon": "clock"},
+    {"id": "ekadashi", "title": "Ekadoshi Chart", "subtitle": "Holy Days", "icon": "date_range"},
+    {"id": "biye_lagno", "title": "Biye Lagno", "subtitle": "Guna Milan", "icon": "favorite"},
+    {"id": "shopping", "title": "Pujo Shopping", "subtitle": "COD Marketplace", "icon": "bag"},
+    {"id": "soronjam", "title": "Pujo Soronjam", "subtitle": "Checklist", "icon": "list"},
+    {"id": "budget", "title": "Budget Planning", "subtitle": "Track Spending", "icon": "wallet"},
+    {"id": "itihash", "title": "Debir Itihash", "subtitle": "Stories & History", "icon": "book"},
+    {"id": "community", "title": "Community", "subtitle": "Groups & Chada", "icon": "group"},
+    {"id": "gallery", "title": "Gallery", "subtitle": "Photo Sharing", "icon": "photo"},
+    {"id": "shareme", "title": "Share Me", "subtitle": "Live Location", "icon": "share"}
+  ]
+}
+

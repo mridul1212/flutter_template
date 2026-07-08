@@ -11,10 +11,12 @@ class AuthLocalDataSource {
 
   String? readAccessToken() => _prefs.getString(AppConstants.tokenKey);
 
+  int? readTokenExpiryMs() => _prefs.getInt(AppConstants.tokenExpiryKey);
+
   bool isTokenValid() {
     final token = readAccessToken();
     if (token == null || token.isEmpty) return false;
-    final expMs = _prefs.getInt(AppConstants.tokenExpiryKey);
+    final expMs = readTokenExpiryMs();
     if (expMs == null) return false;
     return DateTime.now().millisecondsSinceEpoch < expMs;
   }

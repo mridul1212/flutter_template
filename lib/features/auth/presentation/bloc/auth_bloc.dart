@@ -6,44 +6,14 @@ import 'package:flutter_template/features/auth/presentation/bloc/auth_state.dart
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this._repository) : super(const AuthState()) {
-    on<AuthLoginEmailSubmitted>(_onLoginEmail);
-    on<AuthRegisterEmailSubmitted>(_onRegisterEmail);
     on<AuthGoogleDummySubmitted>(_onGoogle);
-    on<AuthPhoneDummySubmitted>(_onPhone);
+    on<AuthProfileCompletionSubmitted>(_onProfileComplete);
     on<AuthLogoutRequested>(_onLogout);
     on<AuthErrorCleared>(_onClear);
     on<AuthSessionConsumed>(_onSessionConsumed);
   }
 
   final AuthRepository _repository;
-
-  Future<void> _onLoginEmail(AuthLoginEmailSubmitted event, Emitter<AuthState> emit) async {
-    emit(state.copyWith(status: AuthStatus.loading, clearError: true));
-    try {
-      final user = await _repository.loginWithEmail(email: event.email, password: event.password);
-      emit(state.copyWith(status: AuthStatus.success, user: user));
-    } on AuthException catch (e) {
-      emit(state.copyWith(status: AuthStatus.idle, errorMessage: e.message));
-    } catch (e) {
-      emit(state.copyWith(status: AuthStatus.idle, errorMessage: e.toString()));
-    }
-  }
-
-  Future<void> _onRegisterEmail(AuthRegisterEmailSubmitted event, Emitter<AuthState> emit) async {
-    emit(state.copyWith(status: AuthStatus.loading, clearError: true));
-    try {
-      final user = await _repository.registerWithEmail(
-        name: event.name,
-        email: event.email,
-        password: event.password,
-      );
-      emit(state.copyWith(status: AuthStatus.success, user: user));
-    } on AuthException catch (e) {
-      emit(state.copyWith(status: AuthStatus.idle, errorMessage: e.message));
-    } catch (e) {
-      emit(state.copyWith(status: AuthStatus.idle, errorMessage: e.toString()));
-    }
-  }
 
   Future<void> _onGoogle(AuthGoogleDummySubmitted event, Emitter<AuthState> emit) async {
     emit(state.copyWith(status: AuthStatus.loading, clearError: true));
@@ -55,11 +25,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  Future<void> _onPhone(AuthPhoneDummySubmitted event, Emitter<AuthState> emit) async {
+  Future<void> _onProfileComplete(AuthProfileCompletionSubmitted event, Emitter<AuthState> emit) async {
     emit(state.copyWith(status: AuthStatus.loading, clearError: true));
     try {
-      final user = await _repository.loginWithPhoneDummy(phone: event.phone);
+      final user = await _repository.completeProfile(
+        name: event.name,
+        district: event.district,
+        dateOfBirth: event.dateOfBirth,
+        timeOfBirth: event.timeOfBirth,
+        birthPlace: event.birthPlace,
+        gender: event.gender,
+      );
       emit(state.copyWith(status: AuthStatus.success, user: user));
+    } on AuthException catch (e) {
+      emit(state.copyWith(status: AuthStatus.idle, errorMessage: e.message));
     } catch (e) {
       emit(state.copyWith(status: AuthStatus.idle, errorMessage: e.toString()));
     }

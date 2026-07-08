@@ -1,0 +1,11 @@
+{
+  "title": "Share Me",
+  "subtitle": "Live location with friends during Pujo 2026",
+  "year": 2026,
+  "items": [
+    {"title": "Enable Location Sharing", "subtitle": "Settings", "detail": "Turn on in Settings → Privacy to share with friends", "tag": "Setup"},
+    {"title": "Pandal hopping route", "subtitle": "Tonight 7 PM", "detail": "Share route from Salt Lake → Park Circus → Gariahat", "tag": "Route"},
+    {"title": "Safety circle", "subtitle": "Family group", "detail": "4 members sharing live location on Dashami", "tag": "Family"},
+    {"title": "Meet at mondop", "subtitle": "Nearby map", "detail": "Open Puja Mondops map to find friends near you", "tag": "Map"}
+  ]
+}

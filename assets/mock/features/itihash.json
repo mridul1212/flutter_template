@@ -1,0 +1,11 @@
+{
+  "title": "Debir Itihash",
+  "subtitle": "Stories of Maa Durga — 2026 reading list",
+  "year": 2026,
+  "items": [
+    {"title": "Mahishasura Mardini", "subtitle": "Origin of Durga Puja", "detail": "Goddess Durga defeats Mahishasura — symbol of victory of good", "tag": "Legend"},
+    {"title": "Ram's Akal Bodhon", "subtitle": "Bengal tradition", "detail": "Untimely autumn worship before battle — linked to Sharadiya Puja", "tag": "History"},
+    {"title": "Sandhi Puja lore", "subtitle": "Ashtami–Navami junction", "detail": "108 lotus & 108 lamps — most sacred moment of Puja", "tag": "Ritual"},
+    {"title": "Kumari Puja", "subtitle": "Belur Math tradition", "detail": "Worship of young girl as living Durga on Ashtami", "tag": "Culture"}
+  ]
+}

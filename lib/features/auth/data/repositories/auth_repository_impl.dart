@@ -1,10 +1,8 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:flutter_template/core/constants/app_constants.dart';
 import 'package:flutter_template/features/auth/data/datasources/auth_local_datasource.dart';
 import 'package:flutter_template/features/auth/domain/entities/user_entity.dart';
-import 'package:flutter_template/features/auth/domain/exceptions/auth_exception.dart';
 import 'package:flutter_template/features/auth/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -22,65 +20,42 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<void> setOnboardingCompleted() => _local.writeOnboardingCompleted();
 
   @override
-  Future<UserEntity> loginWithEmail({required String email, required String password}) async {
-    await Future<void>.delayed(const Duration(milliseconds: 600));
-    final ok =
-        email.trim().toLowerCase() == AppConstants.demoEmail && password == AppConstants.demoPassword;
-    if (!ok) {
-      throw AuthException('Invalid email or password. Try demo@app.com / password1');
-    }
-    final user = UserEntity(
-      id: 'user_demo',
-      name: 'Demo User',
-      email: AppConstants.demoEmail,
-      avatarUrl: AppConstants.dummyAvatarUrl,
-    );
-    await _persistDummyToken(user);
-    return user;
-  }
-
-  @override
-  Future<UserEntity> registerWithEmail({
-    required String name,
-    required String email,
-    required String password,
-  }) async {
-    await Future<void>.delayed(const Duration(milliseconds: 700));
-    final user = UserEntity(
-      id: 'user_${Random().nextInt(1 << 20)}',
-      name: name.trim(),
-      email: email.trim().toLowerCase(),
-      avatarUrl: AppConstants.dummyAvatarUrl,
-    );
-    await _persistDummyToken(user);
-    return user;
-  }
-
-  @override
   Future<UserEntity> loginWithGoogleDummy() async {
-    await Future<void>.delayed(const Duration(milliseconds: 500));
+    await Future<void>.delayed(const Duration(milliseconds: 600));
     final user = UserEntity(
       id: 'user_google',
       name: 'Google User',
-      email: 'google.user@app.com',
+      email: 'puja.bandhu@gmail.com',
       avatarUrl: AppConstants.dummyAvatarUrl,
+      isProfileComplete: false,
     );
     await _persistDummyToken(user);
     return user;
   }
 
   @override
-  Future<UserEntity> loginWithPhoneDummy({required String phone}) async {
-    await Future<void>.delayed(const Duration(milliseconds: 500));
-    final user = UserEntity(
-      id: 'user_phone',
-      name: 'Phone User',
-      email: 'phone.user@app.com',
-      phone: phone,
-      avatarUrl: AppConstants.dummyAvatarUrl,
+  Future<UserEntity> completeProfile({
+    required String name,
+    required String district,
+    required String dateOfBirth,
+    String? timeOfBirth,
+    String? birthPlace,
+    String? gender,
+  }) async {
+    await Future<void>.delayed(const Duration(milliseconds: 400));
+    final current = await getCachedUser();
+    if (current == null) throw Exception('No active session');
+    final updated = current.copyWith(
+      name: name.trim(),
+      district: district.trim(),
+      dateOfBirth: dateOfBirth,
+      timeOfBirth: timeOfBirth?.trim().isEmpty == true ? null : timeOfBirth?.trim(),
+      birthPlace: birthPlace?.trim().isEmpty == true ? null : birthPlace?.trim(),
+      gender: gender,
+      isProfileComplete: true,
     );
-    await _persistDummyToken(user);
-    return user;
+    await updateCachedUser(updated);
+    return updated;
   }
 
   @override
@@ -88,6 +63,21 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<UserEntity?> getCachedUser() async => _local.readUser();
+
+  @override
+  Future<void> updateCachedUser(UserEntity user) async {
+    final token = _local.readAccessToken();
+    final expMs = _local.readTokenExpiryMs();
+    if (token == null || expMs == null) {
+      await _persistDummyToken(user);
+      return;
+    }
+    await _local.persistSession(
+      token: token,
+      expiresAt: DateTime.fromMillisecondsSinceEpoch(expMs),
+      user: user,
+    );
+  }
 
   Future<void> _persistDummyToken(UserEntity user) async {
     final expiresAt = DateTime.now().add(AppConstants.tokenTtl);

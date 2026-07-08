@@ -1,0 +1,8 @@
+{
+  "items": [
+    {"id": "s1", "title": "Baghbazar Sarbojanin", "subtitle": "Favorite mondop · 3.2 km", "tag": "Mondop"},
+    {"id": "s2", "title": "Durga Puja shopping list", "subtitle": "12 items · 4 purchased", "tag": "Checklist"},
+    {"id": "s3", "title": "Anjali reminder", "subtitle": "Set for Saptami morning", "tag": "Reminder"}
+  ]
+}
+

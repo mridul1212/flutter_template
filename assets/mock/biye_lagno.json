@@ -1,0 +1,56 @@
+{
+  "districts": ["Dhaka", "Khulna", "Barishal", "Chattogram", "Rajshahi", "Sylhet"],
+  "sampleProfiles": [
+    {
+      "id": "p1",
+      "name": "Rahul Das",
+      "gender": "male",
+      "dateOfBirth": "1994-03-12",
+      "timeOfBirth": "08:45",
+      "birthPlace": "Dhaka",
+      "nakshatra": "Rohini",
+      "rashi": "Vrishabha"
+    },
+    {
+      "id": "p2",
+      "name": "Priya Sen",
+      "gender": "female",
+      "dateOfBirth": "1996-07-22",
+      "timeOfBirth": "16:20",
+      "birthPlace": "Khulna",
+      "nakshatra": "Uttara Phalguni",
+      "rashi": "Simha"
+    }
+  ],
+  "gunaFactors": [
+    {"key": "varna", "label": "Varna", "maxPoints": 1},
+    {"key": "vashya", "label": "Vashya", "maxPoints": 2},
+    {"key": "tara", "label": "Tara", "maxPoints": 3},
+    {"key": "yoni", "label": "Yoni", "maxPoints": 4},
+    {"key": "grahaMaitri", "label": "Graha Maitri", "maxPoints": 5},
+    {"key": "gana", "label": "Gana", "maxPoints": 6},
+    {"key": "bhakoot", "label": "Bhakoot", "maxPoints": 7},
+    {"key": "nadi", "label": "Nadi", "maxPoints": 8}
+  ],
+  "mockResults": {
+    "p1_p2": {
+      "totalScore": 28,
+      "maxScore": 36,
+      "verdict": "Good",
+      "verdictBn": "ভালো",
+      "nadiDosha": false,
+      "bhakootDosha": false,
+      "breakdown": [
+        {"key": "varna", "points": 1, "note": "Compatible varna"},
+        {"key": "vashya", "points": 2, "note": "Mutual attraction"},
+        {"key": "tara", "points": 2, "note": "Moderate tara"},
+        {"key": "yoni", "points": 3, "note": "Friendly yoni"},
+        {"key": "grahaMaitri", "points": 4, "note": "Strong graha friendship"},
+        {"key": "gana", "points": 5, "note": "Matching gana"},
+        {"key": "bhakoot", "points": 7, "note": "No bhakoot dosha"},
+        {"key": "nadi", "points": 4, "note": "Different nadi — safe"}
+      ],
+      "summary": "A solid match with 28/36 points. Nadi and Bhakoot dosha are not present. Consult a priest for final ceremony timing."
+    }
+  }
+}

@@ -9,6 +9,24 @@ abstract final class AppConstants {
   static const userJsonKey = 'user_profile_json_v1';
 
   static const themeModeKey = 'theme_mode_v1';
+  static const localeKey = 'locale_v1';
+
+  // Settings toggles
+  static const settingsPushNotificationsKey = 'settings_push_notifications_v1';
+  static const settingsAnjaliRemindersKey = 'settings_anjali_reminders_v1';
+  static const settingsEventAlertsKey = 'settings_event_alerts_v1';
+  static const settingsNearbyAlertsKey = 'settings_nearby_alerts_v1';
+  static const settingsGroupUpdatesKey = 'settings_group_updates_v1';
+  static const settingsLocationSharingKey = 'settings_location_sharing_v1';
+
+  /// Ponjika / Logno / Ekadashi — on-device cache (keyed by calendar year).
+  static const ponjikaCacheMetaKey = 'ponjika_cache_meta_v1';
+  static const ponjikaSelectedYearKey = 'ponjika_selected_year_v1';
+  static const soronjamCheckedKey = 'soronjam_checked_v1';
+  static const budgetEntriesKey = 'budget_entries_v1';
+  static const ponjikaCacheTtlCurrentYearHours = 24;
+  static const ponjikaCacheTtlPastYearDays = 30;
+  static const ponjikaMaxCachedYears = 4;
 
   /// Token TTL for dummy JWT-style persistence (7 days).
   static const tokenTtl = Duration(days: 7);

@@ -1,40 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template/features/onboarding/presentation/cubit/onboarding_cubit.dart';
+import 'package:flutter_template/l10n/app_localizations.dart';
 import 'package:flutter_template/presentation/router/app_router_cubit.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
 
-  static const _pages = [
-    _OnboardSlide(
-      icon: Icons.auto_awesome_mosaic_rounded,
-      title: 'Organize your day',
-      subtitle: 'A calm home for tasks, notes, and reminders — tuned for focus.',
-    ),
-    _OnboardSlide(
-      icon: Icons.shield_moon_rounded,
-      title: 'Private by default',
-      subtitle: 'Local-first patterns you can extend with your own backend later.',
-    ),
-    _OnboardSlide(
-      icon: Icons.rocket_launch_rounded,
-      title: 'Ship faster',
-      subtitle: 'Clean architecture + BLoC/Cubit so features stay easy to grow.',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context);
+    final pages = [
+      _OnboardSlide(
+        icon: Icons.temple_hindu_rounded,
+        title: t.onboardingTitle1,
+        subtitle: t.onboardingSubtitle1,
+      ),
+      _OnboardSlide(
+        icon: Icons.alt_route_rounded,
+        title: t.onboardingTitle2,
+        subtitle: t.onboardingSubtitle2,
+      ),
+      _OnboardSlide(
+        icon: Icons.share_location_rounded,
+        title: t.onboardingTitle3,
+        subtitle: t.onboardingSubtitle3,
+      ),
+      _OnboardSlide(
+        icon: Icons.shopping_bag_rounded,
+        title: t.onboardingTitle4,
+        subtitle: t.onboardingSubtitle4,
+      ),
+    ];
     return BlocProvider(
-      create: (_) => OnboardingCubit(pageCount: _pages.length),
-      child: const _OnboardingView(),
+      create: (_) => OnboardingCubit(pageCount: pages.length),
+      child: _OnboardingView(pages: pages),
     );
   }
 }
 
 class _OnboardingView extends StatefulWidget {
-  const _OnboardingView();
+  const _OnboardingView({required this.pages});
+
+  final List<_OnboardSlide> pages;
 
   @override
   State<_OnboardingView> createState() => _OnboardingViewState();
@@ -58,12 +66,13 @@ class _OnboardingViewState extends State<_OnboardingView> {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final t = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
         actions: [
           TextButton(
             onPressed: () => context.read<AppRouterCubit>().completeOnboarding(),
-            child: const Text('Skip'),
+            child: Text(t.skip),
           ),
         ],
       ),
@@ -73,11 +82,11 @@ class _OnboardingViewState extends State<_OnboardingView> {
             Expanded(
               child: PageView.builder(
                 controller: _pageController,
-                itemCount: OnboardingPage._pages.length,
+                itemCount: widget.pages.length,
                 onPageChanged: context.read<OnboardingCubit>().goToPage,
                 itemBuilder: (context, i) => Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                  child: OnboardingPage._pages[i],
+                  child: widget.pages[i],
                 ),
               ),
             ),
@@ -91,7 +100,7 @@ class _OnboardingViewState extends State<_OnboardingView> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: List.generate(
-                          OnboardingPage._pages.length,
+                          widget.pages.length,
                           (i) => AnimatedContainer(
                             duration: const Duration(milliseconds: 250),
                             margin: const EdgeInsets.symmetric(horizontal: 4),
@@ -118,7 +127,7 @@ class _OnboardingViewState extends State<_OnboardingView> {
                               curve: Curves.easeOutCubic,
                             );
                           },
-                          child: Text(cubit.isLast ? 'Get started' : 'Next'),
+                          child: Text(cubit.isLast ? t.getStarted : t.next),
                         ),
                       ),
                     ],

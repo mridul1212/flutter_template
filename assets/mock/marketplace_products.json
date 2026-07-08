@@ -1,0 +1,82 @@
+{
+  "categories": [
+    {"id": "accessories", "name": "Puja Accessories", "nameBn": "পূজার সামগ্রী"},
+    {"id": "books", "name": "Religious Books", "nameBn": "ধর্মীয় বই"},
+    {"id": "clothing", "name": "Clothing", "nameBn": "পোশাক"},
+    {"id": "idols", "name": "Idols / Murti", "nameBn": "মূর্তি"},
+    {"id": "decoration", "name": "Decoration", "nameBn": "সাজসজ্জা"},
+    {"id": "other", "name": "Other", "nameBn": "অন্যান্য"}
+  ],
+  "products": [
+    {
+      "id": "prod_1",
+      "nameEn": "Brass Diya Set (5 pcs)",
+      "nameBn": "পিতলের দিয়া সেট (৫টি)",
+      "category": "accessories",
+      "priceBdt": 850,
+      "stock": 24,
+      "sellerName": "Shanti Bhandar",
+      "rating": 4.7,
+      "deliveryDistricts": ["Dhaka", "Gazipur", "Narayanganj"],
+      "deliveryFeeBdt": 60,
+      "imageEmoji": "🪔",
+      "description": "Handcrafted brass diyas for daily puja and festivals."
+    },
+    {
+      "id": "prod_2",
+      "nameEn": "Chandi Path (Bangla)",
+      "nameBn": "চণ্ডীপাঠ (বাংলা)",
+      "category": "books",
+      "priceBdt": 320,
+      "stock": 50,
+      "sellerName": "Gyan Mandir",
+      "rating": 4.9,
+      "deliveryDistricts": ["Dhaka", "Khulna", "Barishal", "Chattogram"],
+      "deliveryFeeBdt": 0,
+      "imageEmoji": "📖",
+      "description": "Durga Saptashati with Bengali translation and commentary."
+    },
+    {
+      "id": "prod_3",
+      "nameEn": "Dhakai Jamdani Saree",
+      "nameBn": "ঢাকাই জামদানি শাড়ি",
+      "category": "clothing",
+      "priceBdt": 4500,
+      "stock": 8,
+      "sellerName": "Puja Fashion",
+      "rating": 4.5,
+      "deliveryDistricts": ["Dhaka", "Chattogram"],
+      "deliveryFeeBdt": 120,
+      "imageEmoji": "👗",
+      "description": "Festive jamdani for Durga Puja and weddings."
+    },
+    {
+      "id": "prod_4",
+      "nameEn": "Ganesha Brass Idol (6 inch)",
+      "nameBn": "গণেশ পিতল মূর্তি (৬ ইঞ্চি)",
+      "category": "idols",
+      "priceBdt": 2200,
+      "stock": 12,
+      "sellerName": "Murti Ghar",
+      "rating": 4.8,
+      "deliveryDistricts": ["Dhaka", "Khulna", "Rajshahi"],
+      "deliveryFeeBdt": 80,
+      "imageEmoji": "🕉️",
+      "description": "Polished brass Ganesha for home altar."
+    },
+    {
+      "id": "prod_5",
+      "nameEn": "Alpana Stencil Kit",
+      "nameBn": "আলপনা স্টেনসিল কিট",
+      "category": "decoration",
+      "priceBdt": 450,
+      "stock": 30,
+      "sellerName": "Festive Decor BD",
+      "rating": 4.3,
+      "deliveryDistricts": ["Dhaka", "Barishal", "Sylhet"],
+      "deliveryFeeBdt": 50,
+      "imageEmoji": "✨",
+      "description": "Reusable stencils for puja alpana designs."
+    }
+  ]
+}

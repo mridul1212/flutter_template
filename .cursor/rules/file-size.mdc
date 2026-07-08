@@ -1,0 +1,16 @@
+---
+description: Enforce ~300 line target (400 max) per hand-written Dart file; split into widgets/helpers.
+globs: lib/**/*.dart
+alwaysApply: true
+---
+
+# File size limits
+
+Read and follow `PROJECT_FILE_SIZE_RULES.md` in the repo root.
+
+- Target **~300 lines** per hand-written `.dart` file; never exceed **400**.
+- Extract UI to `presentation/widgets/` with descriptive names (`dashboard_countdown_card.dart`).
+- Extract router groups to `presentation/router/app_router_*_routes.dart`.
+- Exempt generated l10n and `*.g.dart`.
+
+When editing a file near the limit, split **before** adding more code.

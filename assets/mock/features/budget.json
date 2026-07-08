@@ -1,0 +1,11 @@
+{
+  "title": "Budget Planning",
+  "subtitle": "Track your 2026 Pujo spending",
+  "year": 2026,
+  "items": [
+    {"title": "Mandap contribution", "subtitle": "₹3,500 planned", "detail": "Monthly chanda for local barowari", "tag": "Community"},
+    {"title": "Shopping & clothes", "subtitle": "₹8,000 planned", "detail": "Saree, gifts, home décor", "tag": "Shopping"},
+    {"title": "Food & pandal hopping", "subtitle": "₹2,200 planned", "detail": "Street food, bhog, transport", "tag": "Food"},
+    {"title": "Donation & puja samagri", "subtitle": "₹1,500 planned", "detail": "Flowers, prasad, temple donation", "tag": "Ritual"}
+  ]
+}
